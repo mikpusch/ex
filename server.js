@@ -98,6 +98,56 @@ if (!db){
 	console.log("could not init db");
 }
 
+
+console.log('MONGOURL:' + mongoURL);
+
+mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+
+var WebSiteSchema = new mongoose.Schema({
+	name : String,
+	created :  {type : Date, default: Date.now}},
+	{collection : 'website'}
+);
+
+var WebSiteModel = mongoose.model('WebSite', WebSiteSchema);
+var website1 = new WebSiteModel({name: "WebSite 1"});
+website1.save();
+
+var developer = [
+	{firstName : "Alice", lastName : "Wonderland", apps : [ {name : "Word"}, {name: "Excel"}	]},
+	{firstName : "Bob", lastName : "Marley", apps : [ {name : "PowerPoint"}, {name: "Excel"} 	]},
+	{firstName : "Mik", lastName : "Pusch",  apps : [ {name : "GePulse"}, {name: "Ana"} ]}
+];
+
+app.get('/rest/developer', function (req, res){
+	res.json(developer);
+	
+});
+
+app.get('/rest/developer/:index', function (req, res){
+	res.json(developer[req.params.index]);
+	
+});
+
+app.post('/rest/developer/', function (req, res){
+//	var newDeveloper = req.body;
+	console.log(req.body);
+	developer.push(req.body);
+	res.json(developer);
+
+});
+
+app.delete('/rest/developer/:index', function(req, res){
+	var index = req.params.index;
+	if (index<developer.length){
+		developer.splice(index,1);
+	}
+	res.json(developer);
+		
+});
+
+
+
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
