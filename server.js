@@ -73,6 +73,7 @@ var db = null;
 var dbDetails = new Object();
 
 var initDb = function(callback) {
+	return;
   if (mongoURL == null) return;
 
   var mongodb = require('mongodb');
@@ -105,7 +106,7 @@ if (local){
 	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 else{
-	mongoose.connect(mongoURL);
+	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 
 
