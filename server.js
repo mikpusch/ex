@@ -1,8 +1,8 @@
 var local = false;
 //  OpenShift sample Node application
-var express = require('express'),
-    app     = express(),
-    morgan  = require('morgan');
+var express = require('express');
+var app     = express();
+var morgan  = require('morgan');
     
 Object.assign=require('object-assign')
 
