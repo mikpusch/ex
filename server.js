@@ -109,9 +109,11 @@ var WebSiteSchema = new mongoose.Schema({
 	{collection : 'website'}
 );
 
+/*
 var WebSiteModel = mongoose.model('WebSite', WebSiteSchema);
 var website1 = new WebSiteModel({name: "WebSite 1"});
 website1.save();
+*/
 
 var developer = [
 	{firstName : "Alice", lastName : "Wonderland", apps : [ {name : "Word"}, {name: "Excel"}	]},
@@ -119,10 +121,12 @@ var developer = [
 	{firstName : "Mik", lastName : "Pusch",  apps : [ {name : "GePulse"}, {name: "Ana"} ]}
 ];
 
+
 app.get('/rest/developer', function (req, res){
 	res.json(developer);
 	
 });
+
 
 app.get('/rest/developer/:index', function (req, res){
 	res.json(developer[req.params.index]);
