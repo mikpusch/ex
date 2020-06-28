@@ -94,7 +94,7 @@ var initDb = function(callback) {
   });
 };
 
-initDb(function(err){});
+//initDb(function(err){});
 if (!db){
 	console.log("could not init db");
 }
@@ -106,7 +106,7 @@ if (local){
 	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 else{
-	mongoose.connect(mongoURL, {useNewUrlParser: true});
+//	mongoose.connect(mongoURL, {useNewUrlParser: true});
 }
 
 
@@ -173,7 +173,9 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-      res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+//	     res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+      res.render('index.html', { pageCountMessage : count, dbInfo: mongoURL });
+
     });
   } else {
     res.render('index.html', { pageCountMessage : null});
