@@ -1,4 +1,4 @@
-var local = false;
+var local = true;
 //  OpenShift sample Node application
 var express = require('express');
 var app     = express();
@@ -69,8 +69,8 @@ if (mongoURL == null) {
     mongoURL += mongoHost + ':' +  mongoPort + '/' + mongoDatabase;
   }
 }
-var db = null,
-    dbDetails = new Object();
+var db = null;
+var dbDetails = new Object();
 
 var initDb = function(callback) {
   if (mongoURL == null) return;
@@ -92,6 +92,11 @@ var initDb = function(callback) {
     console.log('Connected to MongoDB at: %s', mongoURL);
   });
 };
+
+initDb(function(err){});
+if (!db){
+	console.log("could not init db");
+}
 
 app.get('/', function (req, res) {
   // try to initialize the db on every request if it's not already
