@@ -101,7 +101,13 @@ if (!db){
 
 console.log('MONGOURL:' + mongoURL);
 
-//mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+if (local){	
+	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+}
+else{
+	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+}
+
 
 var WebSiteSchema = new mongoose.Schema({
 	name : String,
