@@ -88,6 +88,7 @@ var initDb = function(callback) {
     db = conn;
     dbDetails.databaseName = db.databaseName;
     dbDetails.url = mongoURLLabel;
+	    dbDetails.url = mongoURL;
     dbDetails.type = 'MongoDB';
 
     console.log('Connected to MongoDB at: %s', mongoURL);
@@ -173,8 +174,8 @@ app.get('/', function (req, res) {
       if (err) {
         console.log('Error running count. Message:\n'+err);
       }
-//	     res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-      res.render('index.html', { pageCountMessage : count, dbInfo: mongoURL });
+	     res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
+//      res.render('index.html', { pageCountMessage : count, dbInfo: mongoURL });
 
     });
   } else {
