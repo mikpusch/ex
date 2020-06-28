@@ -6,8 +6,21 @@ var morgan  = require('morgan');
     
 Object.assign=require('object-assign')
 
+
+
+var bodyParser = require('body-parser');
+var multer = require('multer');
+
 app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+app.use(morgan('combined'));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : true}));
+//app.use(multer());
+
+app.use(express.static(__dirname + '/public'));
+
+const mongoose = require('mongoose');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
