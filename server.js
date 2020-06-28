@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({extended : true}));
 
 app.use(express.static(__dirname + '/public'));
 
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
@@ -107,7 +107,7 @@ if (local){
 	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 else{
-//	mongoose.connect(mongoURL, {useNewUrlParser: true});
+	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 
 
@@ -175,7 +175,7 @@ app.get('/', function (req, res) {
         console.log('Error running count. Message:\n'+err);
       }
 	     res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
-//      res.render('index.html', { pageCountMessage : count, dbInfo: mongoURL });
+
 
     });
   } else {
