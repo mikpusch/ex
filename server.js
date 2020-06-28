@@ -103,13 +103,31 @@ if (!db){
 
 console.log('MONGOURL:' + mongoURL);
 
+// Connect to mongodb
+var connectMongoose = function () {
+	if (local){	
+		mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+	}
+	else{
+		mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+	}
+};
+
+connectMongoose();
+var dbMongoose = mongoose.connection;
+
+dbMongoose.on('error', function(error){
+		console.log("Error loading the db - "+ error);
+});
+
+/*
 if (local){	
 	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 else{
-	mongoose.connect(mongoURL);
+	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
-
+*/
 
 var WebSiteSchema = new mongoose.Schema({
 	name : String,
