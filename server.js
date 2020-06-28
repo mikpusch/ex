@@ -120,14 +120,6 @@ dbMongoose.on('error', function(error){
 		console.log("Error loading the db - "+ error);
 });
 
-/*
-if (local){	
-	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
-}
-else{
-	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
-}
-*/
 
 var WebSiteSchema = new mongoose.Schema({
 	name : String,
@@ -135,11 +127,11 @@ var WebSiteSchema = new mongoose.Schema({
 	{collection : 'website'}
 );
 
-/*
+
 var WebSiteModel = mongoose.model('WebSite', WebSiteSchema);
 var website1 = new WebSiteModel({name: "WebSite 1"});
 website1.save();
-*/
+
 
 var developer = [
 	{firstName : "Alice", lastName : "Wonderland", apps : [ {name : "Word"}, {name: "Excel"}	]},
