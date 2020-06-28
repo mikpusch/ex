@@ -105,7 +105,7 @@ if (local){
 	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
 }
 else{
-	mongoose.connect(mongoURL, {useNewUrlParser: true, useUnifiedTopology: true});
+	mongoose.connect(mongoURL);
 }
 
 
