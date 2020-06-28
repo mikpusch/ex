@@ -1,4 +1,4 @@
-var local = true;
+var local = false;
 //  OpenShift sample Node application
 var express = require('express');
 var app     = express();
